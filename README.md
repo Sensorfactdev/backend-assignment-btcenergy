@@ -7,7 +7,7 @@ function to get you started on the assignment. However, feel free to write your
 own implementation if you prefer.
 
 ## Running the project
-Requirement:
+Requirements:
 - NodeJS 14.x (run `nvm use` in root folder)
 - Yarn cli
 - Serverless framework: run `npm install -g serverless`

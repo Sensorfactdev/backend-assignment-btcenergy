@@ -1,7 +1,7 @@
 {
-  "name": "sf-assignment-pow",
+  "name": "backend-assignment-btcenergy",
   "version": "1.0.0",
-  "description": "Sensorfact back-end developer assignment: Proof of Work",
+  "description": "Sensorfact back-end developer assignment",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
