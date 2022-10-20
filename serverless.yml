@@ -1,0 +1,32 @@
+service: sf-assignment-pow
+frameworkVersion: '3'
+configValidationMode: error
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-1
+  lambdaHashingVersion: 20201221
+  memorySize: 256
+  logRetentionInDays: 14
+  timeout: 29
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+custom:
+  esbuild:
+    packager: yarn
+    minify: false
+    sourcemap: false
+    target: node14
+    watch:
+      pattern: ['src/**/*.ts']
+
+functions:
+  graphql:
+    handler: src/fn_graphql.handler
+    events:
+      - httpApi: '*'
