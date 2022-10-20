@@ -1,2 +1,2 @@
-# backend-assignment-btcenergy-
+# backend-assignment-btcenergy
 Assignment for Backend Developer Candidates in Sensorfact
