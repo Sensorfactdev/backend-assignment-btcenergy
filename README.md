@@ -1,6 +1,6 @@
 # Backend Engineer Technical Assignment
-## Introduction 
-This assessment aims to assess the technical, analytical, and collaboration skills of 
+## Introduction
+This assessment aims to assess the technical, analytical, and collaboration skills of
 the candidates for backend development positions in Sensorfact.
 
 In this assignment, we included a few of the technologies that we use in our
@@ -29,7 +29,7 @@ existing products:
    details. Feel free to make assumptions if needed, or contact us for clarification if you consider it necessary.
 >- Take this assignment as an opportunity to show us your style: what you like to
    work on, what you find important, how you address problems,etc.
->- **During the technical interview, we invite you to present your solution and discuss 
+>- **During the technical interview, we invite you to present your solution and discuss
    it together as a team**: which decisions you took and why, questions about specific parts of the code,
    libraries you have used, how easy and maintainable is the code,etc.
 
@@ -45,23 +45,23 @@ the system running. To evaluate the sustainability of the blockchain network in 
 want to create a platform to monitor the energy spent on financial transactions using Bitcoin.
 
 The platform will visualize the energy consumed by the network and potentially calculate energy waste. Our frontend
-development team will need an API (preferably GraphQL) to connect to that provide this information. The platform should
+development team will need an API (preferably GraphQL) to connect to which will provide this information. The platform should
 be able to perform the following operations (already sorted by priority):
 
 - Provide the energy consumption per transaction for a specific block.
-- Provide the total energy consumption per day in the last X days.
+- Provide the total energy consumption per day in the last `x` number of days.
 - Advanced Feature: Optimize the number of calls made to the Blockchain API to avoid asking for the
   same information multiple times.
 - Expert Feature: Provide the total energy consumption of all transactions performed by a specific wallet address.
 
 Even if it is too soon in the product's lifetime to think about non-functional requirements, it will be beneficial to
-build it, considering that we hope to scale the solution and avoid significant refactoring.
+build it considering that we hope to scale the solution and avoid significant refactoring.
 
-## Assumptions 
+## Assumptions
 
-**- You can use a simple model of the BTC network: the network is composed of blocks (identified by a hash value
-or a block index). Each block contains transactions that their hash value can individually identify.**
-- Every transaction consumes a variable store space inside the block, determined by the "size" parameter.
+**- You can use a simple model of the BTC network: the network is composed of blocks (each block identified by a unique `hash` value
+or a block index). Each block contains a set of transactions, each transaction also has a unique `hash` by which it can be indetified.**
+- Every transaction takes up a variable amount of storage space inside the block, indicated by the `size` field (in bytes).
 - Assume that the energy cost per byte is 4,56 KwH.
 - You can use the public Blockchain API from blockchain.com to retrieve information
   (https://www.blockchain.com/explorer/api/blockchain_api), for example:
