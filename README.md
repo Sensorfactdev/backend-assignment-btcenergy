@@ -60,7 +60,7 @@ build it considering that we hope to scale the solution and avoid significant re
 ## Assumptions
 
 **- You can use a simple model of the BTC network: the network is composed of blocks (each block identified by a unique `hash` value
-or a block index). Each block contains a set of transactions, each transaction also has a unique `hash` by which it can be indetified.**
+or a block index). Each block contains a set of transactions, each transaction also has a unique `hash` by which it can be identified.**
 - Every transaction takes up a variable amount of storage space inside the block, indicated by the `size` field (in bytes).
 - Assume that the energy cost per byte is 4,56 KwH.
 - You can use the public Blockchain API from blockchain.com to retrieve information
@@ -78,7 +78,7 @@ own implementation if you prefer.
 
 ## Running the project
 Requirements:
-- NodeJS 14.x (run `nvm use` in root folder)
+- NodeJS 16.x (run `nvm use` in root folder)
 - Yarn cli
 - Serverless framework: run `npm install -g serverless`
 
