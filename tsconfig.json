@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "declaration": true,
-    "noEmit": true,
+    "sourceMap": true,
     "noEmitHelpers": true,
     "importHelpers": true,
     "esModuleInterop": true

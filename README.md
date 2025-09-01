@@ -93,4 +93,3 @@ yarn start
 ```
 
 The server will be ready at: `http://localhost:4000/graphql`
-

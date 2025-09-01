@@ -2,15 +2,20 @@ service: sf-assignment-pow
 frameworkVersion: '3'
 configValidationMode: error
 
+# AWS Provider settings (minimal for local development)
+# For local development only - not for cloud deployment
 provider:
-  name: aws
-  runtime: nodejs16.x
-  stage: ${opt:stage, 'dev'}
-  region: eu-west-1
-  lambdaHashingVersion: 20201221
-  memorySize: 256
-  logRetentionInDays: 14
-  timeout: 29
+  name: aws  # Required by serverless framework
+  runtime: nodejs16.x  # Required for local simulation
+
+# Full AWS deployment settings (commented out for safety)
+# Uncomment these if you want to deploy to AWS cloud
+#   stage: ${opt:stage, 'dev'}
+#   region: eu-west-1
+#   lambdaHashingVersion: 20201221
+#   memorySize: 256
+#   logRetentionInDays: 14
+#   timeout: 29
 
 plugins:
   - serverless-esbuild
@@ -24,9 +29,17 @@ custom:
     target: node16
     watch:
       pattern: ['src/**/*.ts']
+  serverless-offline:
+    reloadHandler: false
+    cacheInvalidationRegex: "node_modules"
+    httpPort: 4000
+    lambdaPort: 3002
+    timeout: 30  # 30 seconds timeout for serverless-offline
 
 functions:
   graphql:
     handler: src/fn_graphql.handler
+    timeout: 30  # 30 seconds timeout for GraphQL queries
+    memorySize: 512  # Increase memory for better performance
     events:
       - httpApi: '*'

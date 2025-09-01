@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "compile",
+      "group": "build",
+      "label": "npm: compile",
+      "detail": "tsc -p . --noEmit"
+    },
+    {
+      "type": "npm",
+      "script": "debug",
+      "group": "build",
+      "label": "npm: debug",
+      "detail": "node --inspect=9229 node_modules/serverless/bin/serverless.js offline start --httpPort=4000 --host=0.0.0.0",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^\\s*at\\s+(.*?)\\s+\\((.*?):(\\d+):(\\d+)\\)$",
+          "file": 2,
+          "line": 3,
+          "column": 4,
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Serverless: Starting Offline.*$",
+          "endsPattern": "^.*offline: Offline \\[http for lambda\\] listening on.*$"
+        }
+      }
+    }
+  ]
+}

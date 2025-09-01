@@ -5,18 +5,25 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "serverless offline start --httpPort=4000 --host 0.0.0.0 --reloadHandler",
+    "start": "serverless offline start --httpPort=4000 --host 0.0.0.0",
+    "debug": "node --inspect=9230 node_modules/serverless/bin/serverless.js offline start --httpPort=4000 --host=0.0.0.0",
     "compile": "tsc -p . --noEmit",
     "test": "jest",
     "test:watch": "jest --watch --onlyChanged"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.6.12",
+    "dotenv": "^17.2.1",
+    "graphiql": "^5.2.0",
     "graphql": "^15.5.1",
     "graphql-compose": "^9.0.8",
     "graphql-helix": "^1.13.0",
+    "graphql-playground-middleware-lambda": "^1.7.24",
     "graphql-request": "^5.0.0",
     "graphql-scalars": "^1.18.0",
-    "lambda-api": "^0.11.2"
+    "lambda-api": "^0.11.2",
+    "node-fetch": "^3.3.2",
+    "redis": "^4.6.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.80",

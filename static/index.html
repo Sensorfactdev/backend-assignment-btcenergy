@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Energy Monitoring API</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 20px 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary {
+            background: #ff6b6b;
+            color: white;
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffd93d;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .api-example {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ Bitcoin Energy Monitoring API</h1>
+        <div class="subtitle">
+            Real-time Bitcoin blockchain energy consumption analysis with GraphQL
+        </div>
+
+        <div class="cta-buttons">
+            <a href="/" class="btn btn-primary" target="_blank">
+                🎨 Open GraphiQL Interface
+            </a>
+            <a href="../api-tester.html" class="btn btn-secondary" target="_blank">
+                🧪 Simple API Tester
+            </a>
+            <a href="#documentation" class="btn btn-secondary">
+                📚 View Documentation
+            </a>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">GraphQL Queries Available</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4.56</div>
+                <div class="stat-label">KwH per Byte Energy Model</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5min</div>
+                <div class="stat-label">API Response Caching</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">TypeScript Coverage</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="icon">🔋</div>
+                <h3>Block Energy Analysis</h3>
+                <p>Get detailed energy consumption for any Bitcoin block, including per-transaction breakdown and total energy usage.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">📊</div>
+                <h3>Daily Energy Trends</h3>
+                <p>Analyze energy consumption patterns over time with daily aggregated data for the last X days.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">💰</div>
+                <h3>Wallet Energy Tracking</h3>
+                <p>Monitor the total energy footprint of specific Bitcoin wallet addresses and their transaction history.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">⚡</div>
+                <h3>Real-time Data</h3>
+                <p>Access live Bitcoin blockchain data with intelligent caching for optimal performance and reliability.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🛡️</div>
+                <h3>Error Recovery</h3>
+                <p>Robust error handling with graceful degradation ensures reliable data even when some sources fail.</p>
+            </div>
+            <div class="feature">
+                <div class="icon">🚀</div>
+                <h3>GraphQL Interface</h3>
+                <p>Powerful GraphQL API with visual explorer, auto-completion, and comprehensive schema documentation.</p>
+            </div>
+        </div>
+
+        <div id="documentation">
+            <h2>📋 Quick Start Examples</h2>
+            
+            <h3>Latest Block Energy</h3>
+            <div class="api-example">
+{
+  latestBlockEnergy {
+    blockHash
+    totalEnergyKwh
+    transactionCount
+  }
+}
+            </div>
+
+            <h3>Daily Energy Consumption</h3>
+            <div class="api-example">
+{
+  dailyEnergyConsumption(days: 7) {
+    date
+    totalEnergyKwh
+    transactionCount
+  }
+}
+            </div>
+
+            <h3>Wallet Energy Analysis</h3>
+            <div class="api-example">
+{
+  walletEnergyConsumption(
+    address: "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+    limit: 10
+  ) {
+    totalEnergyKwh
+    transactionCount
+  }
+}
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; opacity: 0.8;">
+            <p>🌱 Built for Bitcoin sustainability analysis and energy transparency</p>
+            <p>⚡ Powered by GraphQL, TypeScript, and Serverless architecture</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature, .stat').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>
