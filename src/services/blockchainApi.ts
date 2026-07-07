@@ -1,13 +1,15 @@
-import type { RawBlock, RawBlockSummary } from '../types/blockchain'
+import type { RawAddressPage, RawBlock, RawBlockSummary } from '../types/blockchain'
 import { getOrSet } from './cache'
 
 const BASE_URL = 'https://blockchain.info'
 
 // A block's own data (by hash) never changes once mined, so it's cached
-// forever. The day-blocks list is a rolling window that can still be
-// growing (e.g. "today"), so it gets a short TTL instead of "forever".
+// forever. The day-blocks list and an address's transaction history can
+// both still be growing (new blocks/transactions arrive over time), so
+// they get a short TTL instead of "forever".
 const BLOCK_TTL_SECONDS = null
 const BLOCKS_FOR_DAY_TTL_SECONDS = 300
+const ADDRESS_PAGE_TTL_SECONDS = 300
 
 // Every network call to blockchain.info funnels through this one function,
 // wrapped in the in-memory cache from ./cache (see that file for its
@@ -41,4 +43,26 @@ export async function getBlock(hash: string): Promise<RawBlock> {
 
 export async function getBlocksForDay(dayStartMs: number): Promise<RawBlockSummary[]> {
   return fetchJson<RawBlockSummary[]>(`/blocks/${dayStartMs}?format=json`, BLOCKS_FOR_DAY_TTL_SECONDS)
+}
+
+interface RawAddressResponse {
+  address: string
+  n_tx: number
+  txs: Array<{ hash: string; size: number }>
+}
+
+export async function getAddressTransactionsPage(
+  address: string,
+  limit: number,
+  offset: number,
+): Promise<RawAddressPage> {
+  const raw = await fetchJson<RawAddressResponse>(
+    `/rawaddr/${address}?limit=${limit}&offset=${offset}`,
+    ADDRESS_PAGE_TTL_SECONDS,
+  )
+  return {
+    address: raw.address,
+    totalTxCount: raw.n_tx,
+    transactions: raw.txs.map((t) => ({ txId: t.hash, size: t.size })),
+  }
 }

@@ -5,7 +5,8 @@ interface CacheEntry {
 
 const store = new Map<string, CacheEntry>()
 
-// In-memory cache using Map. In production use Redis.
+// In-memory cache using Map. Would not work in a production environment 
+// with multiple containers. In production use Redis.
 export async function getOrSet<T>(
   key: string,
   ttlSeconds: number | null,

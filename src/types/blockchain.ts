@@ -15,3 +15,9 @@ export interface RawBlockSummary {
   height: number
   time: number
 }
+
+export interface RawAddressPage {
+  address: string
+  totalTxCount: number
+  transactions: RawBlockTransaction[]
+}
