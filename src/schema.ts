@@ -52,8 +52,13 @@ schemaComposer.Query.addFields({
   },
   dailyEnergyConsumption: {
     type: [DailyEnergyConsumptionTC],
-    args: { days: 'Int!' },
-    resolve: async (_source, args: { days: number }) => getDailyEnergy(args.days),
+    args: {
+      days: 'Int!',
+      // Dev/demo escape to keep this inside sync request timeouts
+      maxBlocksPerDay: 'Int',
+    },
+    resolve: async (_source, args: { days: number; maxBlocksPerDay?: number }) =>
+      getDailyEnergy(args.days, args.maxBlocksPerDay),
   },
 })
 
