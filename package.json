@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.80",
+    "@types/jest": "^30.0.0",
     "@types/node": "20.x",
     "@types/serverless": "^3",
     "aws-sdk": "^2.952.0",
@@ -28,6 +29,7 @@
     "serverless": "^3.40.0",
     "serverless-esbuild": "^1.57.0",
     "serverless-offline": "^13.9.0",
+    "ts-jest": "^29.4.11",
     "typescript": "^5.8.0"
   }
 }
